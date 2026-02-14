@@ -48,19 +48,11 @@ class Battleship:
                 column.append("~")
             self.battlefield.append(column)
 
-    def print_battlefield(self):
-        length = len(self.battlefield)
-        for i in range(length):
-            for j in range(length):
-                print(f"{self.battlefield[i][j]}", end=" ")
-            print("")
-
     def fire(self, place: tuple) -> str:
         for ship in self.ships:
             if ship.get_deck(place[0], place[1]) is not None:
                 ship.fire(place[0], place[1])
                 if ship.is_drowned:
                     return "Sunk!"
-                else:
-                    return "Hit!"
+                return "Hit!"
         return "Miss!"
