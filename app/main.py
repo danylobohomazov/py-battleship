@@ -24,11 +24,10 @@ class Ship:
         for i in range(lenght + 1):
             self.decks.append(Deck(start[0] + i * x, start[1] + i * y, True))
 
-    def get_deck(self, row, column):
+    def get_deck(self, row, column) -> None| Deck:
         for deck in self.decks:
             if deck.row == row and deck.column == column:
                 return deck
-        return None
 
     def fire(self, row, column):
         for deck in self.decks:
@@ -41,12 +40,6 @@ class Ship:
 class Battleship:
     def __init__(self, ships):
         self.ships = [Ship(ship[0], ship[1]) for ship in ships]
-        self.battlefield = []
-        for _ in range(10):
-            column = []
-            for _ in range(10):
-                column.append("~")
-            self.battlefield.append(column)
 
     def fire(self, place: tuple) -> str:
         for ship in self.ships:
